@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+}
+canvas {
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+}
+.tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+.tools button {
+  padding: 12px 20px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.canvas-palette {
+  width: 85%;
+}
+.controls {
+  width: 300px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+  height: 100vh;
+}
+.section {
+  padding: 15px 20px;
+  border-bottom: 1px solid grey;
+  text-align: left;
+}
+
+.section label {
+  margin-bottom: 30px;
+  display: block;
+}
+.color-field {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+.color-chooser {
+  display: flex;
+  justify-content: space-around;
+}
+.stroke {
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.stroke.active {
+  border:1px solid blue;
+  padding: 4px;
+}
+.stroke-field {
+  background: black;
+}
