@@ -1,9 +1,11 @@
 import React from "react";
 import io from "socket.io-client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-regular-svg-icons";
 
 export default class CanvasBoard extends React.Component {
   timeout;
-  socket = io.connect("http://localhost:5000");
+  socket = io.connect(`http://localhost:5000/${this.props.sessionId}`);
 
   ctx;
   isDrawing = false;
@@ -12,11 +14,6 @@ export default class CanvasBoard extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //   backgroundColor: "white",
-    //   selectedIndex: -1,
-    //   selectedBrushColor: "white",
-    // };
     this.undo = this.undo.bind(this);
     this.onClear = this.onClear.bind(this);
     this.socket.on("canvas-data", function (data) {
@@ -43,24 +40,24 @@ export default class CanvasBoard extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    var canvas = document.querySelector("#board");
     // change brush color
     this.ctx.strokeStyle = newProps.color;
     // change stroke size
     this.ctx.lineWidth = newProps.size;
     // change background color
-    canvas.style.backgroundColor = newProps.backgroundColor
+    // canvas.style.backgroundColor = newProps.backgroundColor;
   }
 
   drawOnCanvas() {
     var canvas = document.querySelector("#board");
+    this.canvas = canvas
     this.ctx = canvas.getContext("2d");
     var ctx = this.ctx;
 
     var sketch = document.querySelector("#sketch");
     var sketch_style = getComputedStyle(sketch);
     canvas.width = parseInt(sketch_style.getPropertyValue("width"));
-    canvas.height = window.innerHeight - 100;
+    canvas.height = window.innerHeight - 142;
     var mouse = { x: 0, y: 0 };
     var last_mouse = { x: 0, y: 0 };
 
@@ -108,26 +105,6 @@ export default class CanvasBoard extends React.Component {
       false
     );
 
-
-    // canvas.addEventListener("mouseup", addArray, false);
-
-    
-    // var addArray = function () {
-    //   if (window.event.type !== "mouseout") {
-    //     root.restore_array.push(
-    //       root.ctx.getImageData(0, 0, canvas.width, canvas.height)
-    //     );
-    //     root.index += 1;
-    //   }
-    // };
-
-    // const resetBtn = document.getElementById("undo");
-    // resetBtn.addEventListener("click", undo, false);
-
-    // const clearBtn = document.getElementById("clear");
-    // clearBtn.addEventListener("click", onClear, false);
-
-   
     var onPaint = function () {
       ctx.beginPath();
       ctx.moveTo(last_mouse.x, last_mouse.y);
@@ -154,9 +131,9 @@ export default class CanvasBoard extends React.Component {
   }
 
   onClear() {
-    // this.ctx.fillStyle = "white";
-    // this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //  this.ctx.fillStyle = "white";
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+   // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   render() {
@@ -164,13 +141,13 @@ export default class CanvasBoard extends React.Component {
       <div className="sketch" id="sketch">
         <canvas className="board" id="board"></canvas>
         <div className="tools">
-          <input type="button" id="undo" value="undo" onClick={this.undo} />
-          <input
-            type="button"
-            id="clear"
-            value="clear"
-            onClick={this.onClear}
-          />
+          <button onClick={this.undo} id="undo">
+            <i class="bi bi-arrow-clockwise"> </i>Undo
+          </button>
+
+          <button onClick={this.onClear} id="clear">
+          <i class="bi bi-x-octagon"></i> Clear
+          </button>
         </div>
       </div>
     );

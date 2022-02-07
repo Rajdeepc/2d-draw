@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import ClickToCopy from "../ClickToCopy/ClickToCopy";
 
-export default function CollaborationModal({ show, handleClose }) {
+export default function CollaborationModal({ show, handleClose,isRecording }) {
   const [collaborationInitiated, setCollaborationInitiated] = useState(true);
   const [collaborationStarted, setCollaborationStarted] = useState(false);
 
@@ -44,23 +44,20 @@ export default function CollaborationModal({ show, handleClose }) {
                     link={window.location.href}
                   />
                 </div>
-                <div>
-                  <span>You Name:</span>
-                  <span>
-                    <input type="text" onChange={handleNameChange} />
-                  </span>
-                </div>
-                <p>
+                <br></br>
+                <small>
                   🔒 Don't worry, the session uses end-to-end encryption, so
                   whatever you draw will stay private. Not even our server will
                   be able to see what you come up with.
-                </p>
-                <p>
+                </small>
+                <br></br>
+                <br></br>
+                <small>
                   Stopping the session will disconnect you from the room, but
                   you'll be able to continue working with the scene, locally.
                   Note that this won't affect other people, and they'll still be
                   able to collaborate on their version.
-                </p>
+                </small>
               </div>
             )}
           </React.Fragment>
@@ -75,6 +72,7 @@ export default function CollaborationModal({ show, handleClose }) {
               onClick={() => {
                 setCollaborationStarted(true);
                 setCollaborationInitiated(false);
+                isRecording(true)
               }}
             >
               Start Session
@@ -86,6 +84,8 @@ export default function CollaborationModal({ show, handleClose }) {
               onClick={() => {
                 setCollaborationStarted(false);
                 setCollaborationInitiated(true);
+                isRecording(false)
+
               }}
             >
               End Session

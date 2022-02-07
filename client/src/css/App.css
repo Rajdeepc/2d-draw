@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 .App {
   text-align: center;
@@ -5,10 +6,10 @@
 header {
   padding: 12px 10px;
   text-align: left;
-  width: 99%;
-    border-bottom: 1px solid;
-    background: #474747;
-    color: white;
+  width: 100%;
+  border-bottom: 1px solid;
+  background: #dfdfdf;
+  color: white;
 }
 .App-logo {
   height: 40vmin;
@@ -52,7 +53,6 @@ header {
 canvas {
   border-bottom: 1px solid grey;
   cursor: pointer;
-  margin-top:10px;
 }
 .tools {
   display: flex;
@@ -61,9 +61,17 @@ canvas {
   margin-top: 20px;
 }
 .tools button {
-  padding: 12px 20px;
-  font-size: 20px;
-  margin-right: 20px;
+  padding: 8px 14px;
+  font-size: 15px;
+  margin-right: 16px;
+  border: 0 none;
+}
+#undo {
+
+}
+#clear {
+  background: #f16d6d;
+  color: white;
 }
 .canvas-palette {
   width: 85%;
@@ -72,8 +80,8 @@ canvas {
   width: 270px;
   height: 100vh;
   font-size: 14px;
-  background: #474747;
-  color: white;
+  background: #dfdfdf;
+  color: #616161;
 }
 .section {
   padding: 15px 20px;
@@ -137,5 +145,22 @@ button:hover {
 .swatches-picker div > div {
   box-shadow: none !important;
   padding: 0px !important;
-  background: #474747 !important;
+  background: #dfdfdf !important;
+}
+.copyToClipboard {
+  display: flex;
+}
+
+.share {
+  position: relative;
+}
+.recordfill {
+  color: lightgreen;
+  position: absolute;
+  top: -13px;
+  left: 22px;
+}
+.stroke-selection{
+  display: flex;
+  justify-content: space-between;
 }
