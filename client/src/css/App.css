@@ -1,7 +1,15 @@
+
 .App {
   text-align: center;
 }
-
+header {
+  padding: 12px 10px;
+  text-align: left;
+  width: 99%;
+    border-bottom: 1px solid;
+    background: #474747;
+    color: white;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -44,6 +52,7 @@
 canvas {
   border-bottom: 1px solid grey;
   cursor: pointer;
+  margin-top:10px;
 }
 .tools {
   display: flex;
@@ -60,9 +69,11 @@ canvas {
   width: 85%;
 }
 .controls {
-  width: 300px;
-  box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+  width: 270px;
   height: 100vh;
+  font-size: 14px;
+  background: #474747;
+  color: white;
 }
 .section {
   padding: 15px 20px;
@@ -77,21 +88,54 @@ canvas {
 .color-field {
   width: 30px;
   height: 30px;
-  border-radius: 6px;
+}
+
+.color-field.active {
+  border: 1px solid blue;
 }
 .color-chooser {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 15px;
+}
+.stroke-header {
+  display: flex;
+  justify-content: space-between;
 }
 .stroke {
   margin-bottom: 20px;
   cursor: pointer;
   transition: 0.3s all;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  font-size: 12px;
+  text-align: center;
 }
 .stroke.active {
-  border:1px solid blue;
+  border: 1px solid blue;
   padding: 4px;
 }
 .stroke-field {
   background: black;
+}
+div[role="button"]:hover,
+button:hover {
+  cursor: pointer;
+}
+.stroke-field.active {
+  border: 2px solid;
+}
+
+/** swatches **/
+
+.swatches-picker {
+  width: 219px !important;
+}
+
+.swatches-picker div > div {
+  box-shadow: none !important;
+  padding: 0px !important;
+  background: #474747 !important;
 }

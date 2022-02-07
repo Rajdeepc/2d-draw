@@ -1,0 +1,1 @@
+export const palette = ['white','red','yellow','blue','green','pink','violet','orange']
